@@ -1,0 +1,35 @@
+.slider {
+    height: 14rem;
+    padding-left: 4rem;
+    margin-right: 4rem;
+    position: relative;
+}
+
+@media (max-width: 780px) {
+    .slider {
+      padding-left: 20%;
+    }
+  }
+
+@media (max-width: 570px) {
+    .slider {
+      padding-left: 15%;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .slider {
+      padding-left: 0.2rem;
+    }
+  }
+
+.back {
+    position: relative;
+    top: -7.5rem;
+}
+
+.front {
+    position: relative;
+    top: -7.5rem;
+    right: calc(100px - 100%);
+}

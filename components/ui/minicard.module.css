@@ -1,0 +1,82 @@
+.minicard {
+  background-color: white;
+  width: 20rem;
+  height: 11rem;
+  margin-top: 1.5rem;
+  /* margin-bottom: 2rem; */
+  box-shadow: 0.05rem 0.05rem 0.5rem rgb(161, 161, 161),
+    -0.05rem -0.05rem 0.5rem rgb(161, 161, 161);
+  border-radius: 10%;
+  transform: scale(1);
+  transition: 0.4s;
+}
+
+@media (max-width: 890px) {
+  .minicard {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 780px) {
+  .minicard {
+    transform: scale(1);
+  }
+}
+
+div:hover.minicard {
+  box-shadow: 0.1rem 0.1rem 1rem rgb(161, 161, 161),
+    -0.1rem -0.1rem 1rem rgb(161, 161, 161);
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
+@media (max-width: 600px) {
+  .minicard {
+    transform: scale(0.8);
+  }
+  div:hover.minicard {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 430px) {
+  .minicard {
+    transform: scale(0.6);
+  }
+  div:hover.minicard {
+    transform: scale(0.7);
+  }
+}
+
+.minicard img {
+  height: 100%;
+  width: 50%;
+  border: 0px solid transparent;
+  border-radius: 10% 0 0 10%;
+  border-right: 1px solid rgb(212, 212, 212);
+}
+
+.textbox {
+  position: relative;
+  width: 50%;
+  left: 50%;
+  bottom: 100%;
+  height: 95%;
+  border-radius: 0 10% 10% 0;
+  margin: 0;
+  /* padding-top: 2%; */
+  /* padding-left: 2%; */
+  padding: 1.5%;
+  /* padding-bottom: 2%; */
+  overflow: auto;
+  /* background:linear-gradient(transparent 100%, white); */
+}
+
+.textbox h1 {
+  padding-bottom: 3%;
+}
+
+.textbox div {
+  color: grey;
+  margin-right: 1%;
+}

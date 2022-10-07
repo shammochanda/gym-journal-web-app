@@ -1,0 +1,16 @@
+.bar1,
+.bar2 {
+  width: 18px;
+  height: 4px;
+  background-color: white;
+  color: white;
+  margin: 0;
+}
+
+.bar1 {
+    transform: translate(4.5px, 3px) ;
+}
+
+.bar2 {
+  transform: rotate(90deg) translate(-1px, -4.5px) ;
+}

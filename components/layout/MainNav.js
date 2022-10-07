@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Hamburger from "../menu/hamburger";
+import Hamburger from "../icons/hamburger";
 import { useMediaQuery } from "react-responsive";
 import classes from "./MainNav.module.css";
 
@@ -11,7 +11,11 @@ const MainNav = (props) => {
     setShowList(!showList);
   };
 
-  let change = useMediaQuery({ query: "(min-width: 551px)" });
+  const hamburgerLogoHandler = (event) => {
+    setShowList(false);
+  };
+
+  let change = useMediaQuery({ query: "(min-width: 571px)" });
 
   useEffect(() => {
     if (change) {
@@ -23,7 +27,7 @@ const MainNav = (props) => {
     <header className={classes.header}>
       <span className={classes.logo}>
         <Link href="/">
-          <a>GYM/JOURNAL</a>
+          <a onClick={hamburgerLogoHandler}>GYM/JOURNAL</a>
         </Link>
       </span>
       <nav>

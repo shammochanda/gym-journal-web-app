@@ -1,0 +1,37 @@
+.form {
+    margin-top: 2rem; 
+}
+
+.form label {
+    margin-right: 10px;
+}
+
+.form input {
+    margin-right: 10px;
+    border: 1px solid rgb(179, 179, 179);
+    padding-left: 10px;
+    height: 25px;
+    border-radius: 10px;
+    color: black;
+}
+
+.form button {
+    width: 6rem;
+    height: 2rem;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+    border-radius: 30px;
+    transition: 0.4s;
+    cursor: pointer;
+    border: none;
+}
+
+.form button:hover {
+    transform: scale(1.1);
+}
+
+.error {
+    background-color: rgba(255, 0, 0, 0.2);
+}
