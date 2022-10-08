@@ -11,15 +11,11 @@ const Home = (props) => {
     <Fragment>
       <MetaHead metacontent="Dashboard">Dashboard | Gym Journal</MetaHead>
       <MainCard>
-        {/* <MainHeading>Next Workout</MainHeading>
-        <MiniCard>Something</MiniCard>
-        <MainHeading>Workouts</MainHeading>
-        <MiniCard imglink="/Squats.svg" alt="Squats">Something</MiniCard> */}
         <BigHeading>Dashboard</BigHeading>
         <MainHeading>Today</MainHeading>
-        <Carousel />
+        <Carousel all={true}/>
         <MainHeading search={true}>Workouts</MainHeading>
-        <Carousel />
+        <Carousel all={true}/>
       </MainCard>
     </Fragment>
   );

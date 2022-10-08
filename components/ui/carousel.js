@@ -10,6 +10,7 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
 import { workoutActions } from "../../store/workouts";
+import { editScheduleActions } from "../../store/editschedule";
 import classes from "./carousel.module.css";
 import MiniCard from "./minicard";
 import Hamburger from "../icons/hamburger";
@@ -18,6 +19,14 @@ const Carousel = (props) => {
   const [slides, setSlides] = useState(4);
 
   const allWorkouts = useSelector((state) => state.workout.workouts);
+
+  const dayWorkouts =
+    !props.all &&
+    useSelector((state) => state.workout.daysToWorkouts[props.day]);
+
+  const searchTerm = useSelector((state) => state.workout.searchTerm);
+
+  const editing = useSelector((state) => state.editSchedule.editSchedule);
 
   let change3 = useMediaQuery({ query: "(max-width: 1620px)" });
 
@@ -46,11 +55,25 @@ const Carousel = (props) => {
       step={slides}
     >
       <Slider className={classes.slider}>
-        {allWorkouts.map((slideCard, index) => (
-          <Slide index={index}>
-            <MiniCard title={slideCard} />
-          </Slide>
-        ))}
+        {props.all
+          ? allWorkouts
+              .filter((workout) =>
+                workout.toLowerCase().includes(searchTerm.toLowerCase())
+              )
+              .map((slideCard, index) => (
+                <Slide index={index}>
+                  <MiniCard title={slideCard} subtract={editing} />
+                </Slide>
+              ))
+          : dayWorkouts.map((slideCard, index) => (
+              <Slide index={index}>
+                <MiniCard
+                  title={slideCard}
+                  subtract={editing}
+                  day={props.day}
+                />
+              </Slide>
+            ))}
       </Slider>
       <ButtonBack className={classes.back}>
         <Hamburger />

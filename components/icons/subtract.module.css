@@ -1,0 +1,11 @@
+.bar1 {
+  width: 18px;
+  height: 4px;
+  background-color: white;
+  color: white;
+  margin: 0;
+}
+
+.bar1 {
+  transform: translate(-1px, 1px);
+}

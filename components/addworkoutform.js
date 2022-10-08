@@ -1,24 +1,34 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { workoutActions } from "../store/workouts";
 import classes from "./addworkoutform.module.css";
 
 const AddWorkoutForm = (props) => {
   const dispatch = useDispatch();
-  const workoutNameInputRef = useRef();
+
+  const [workoutName, setWorkoutName] = useState("");
 
   const [nameExists, setNameExists] = useState(false);
 
   const allWorkouts = useSelector((state) => state.workout.workouts);
 
+  const nameOnChangeHandler = (event) => {
+    setWorkoutName(event.target.value);
+  };
+
   const submitHandler = (event) => {
+
     event.preventDefault();
-    if (allWorkouts.includes(workoutNameInputRef.current.value)) {
+
+    const index = allWorkouts.findIndex(element => {
+      return element.toLowerCase() === workoutName.toLowerCase();
+    });
+    if (index >= 0) {
       setNameExists(true);
     } else {
       setNameExists(false);
-      dispatch(workoutActions.addWorkout(workoutNameInputRef.current.value));
-      workoutNameInputRef.current.value = "";
+      dispatch(workoutActions.addWorkout(workoutName));
+      setWorkoutName('');
     }
   };
 
@@ -30,7 +40,8 @@ const AddWorkoutForm = (props) => {
         id="workout"
         className={nameExists && classes.error}
         required
-        ref={workoutNameInputRef}
+        onChange={nameOnChangeHandler}
+        value={workoutName}
       />
       <button onClick={submitHandler}>Submit</button>
     </form>
