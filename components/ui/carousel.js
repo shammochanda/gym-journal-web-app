@@ -1,4 +1,4 @@
-import { useEffect, useState, React } from "react";
+import { useEffect, useState, memo } from "react";
 import {
   CarouselProvider,
   Slider,
@@ -58,19 +58,26 @@ const Carousel = (props) => {
         {props.all
           ? allWorkouts
               .filter((workout) =>
-                workout.toLowerCase().includes(searchTerm.toLowerCase())
+                workout["workout"]
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())
               )
               .map((slideCard, index) => (
-                <Slide index={index}>
-                  <MiniCard title={slideCard} subtract={editing} />
+                <Slide index={index} key={slideCard["workout"]}>
+                  <MiniCard
+                    title={slideCard["workout"]}
+                    subtract={editing}
+                    exercises={slideCard["allExercises"]}
+                  />
                 </Slide>
               ))
           : dayWorkouts.map((slideCard, index) => (
-              <Slide index={index}>
+              <Slide index={index} key={slideCard["workout"]}>
                 <MiniCard
-                  title={slideCard}
+                  title={slideCard["workout"]}
                   subtract={editing}
                   day={props.day}
+                  exercises={slideCard["allExercises"]}
                 />
               </Slide>
             ))}

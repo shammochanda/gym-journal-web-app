@@ -1,0 +1,7 @@
+.scrollable {
+    margin-top: 5%;
+    height: 88%;
+    overflow-y: auto;
+    padding-left: 5%;
+    /* display: inline-block; */
+}

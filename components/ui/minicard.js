@@ -7,7 +7,8 @@ const MiniCard = (props) => {
   const dispatch = useDispatch();
 
   const dayWorkouts =
-    props.day && useSelector((state) => state.workout.daysToWorkouts[props.day]);
+    props.day &&
+    useSelector((state) => state.workout.daysToWorkouts[props.day]);
 
   const subtractHandler = () => {
     const index = dayWorkouts.indexOf(props.title);
@@ -23,14 +24,19 @@ const MiniCard = (props) => {
         <div className={classes.textbox}>
           <div className={classes.text}>
             <h1>{props.title || "Placeholder"}</h1>
-            <div>-Some Exercise </div>
+            {props.exercises.map((exercise) => (
+              <div key={Math.random().toString()}>
+                {`${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
+              </div>
+            ))}
+            {/* <div>-Some Exercise </div>
             <div>-Some Exercise</div>
             <div>-Some Exercise</div>
             <div>-Some Exercise</div>
             <div>-Some Exercise</div>
             <div>-Some Exercise</div>
             <div>-Some Exercise</div>
-            <div>-Some Exercise</div>
+            <div>-Some Exercise</div> */}
           </div>
           <div className={classes.subtract}>
             <button className={classes.button} onClick={subtractHandler}>
@@ -41,14 +47,19 @@ const MiniCard = (props) => {
       ) : (
         <div className={classes.textboxFull}>
           <h1>{props.title || "Placeholder"}</h1>
-          <div>-Some Exercise </div>
+          {props.exercises.map((exercise) => (
+              <div key={Math.random().toString()}>
+                {`${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
+              </div>
+            ))}
+          {/* <div>-Some Exercise </div>
           <div>-Some Exercise</div>
           <div>-Some Exercise</div>
           <div>-Some Exercise</div>
           <div>-Some Exercise</div>
           <div>-Some Exercise</div>
           <div>-Some Exercise</div>
-          <div>-Some Exercise</div>
+          <div>-Some Exercise</div> */}
         </div>
       )}
     </div>

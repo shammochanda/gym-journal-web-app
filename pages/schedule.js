@@ -7,9 +7,11 @@ import Carousel from "../components/ui/carousel";
 import { useSelector } from "react-redux";
 import { workoutActions } from "../store/workouts";
 import { editScheduleActions } from "../store/editschedule";
+import { Classnames } from "react-alice-carousel";
 
 const Home = (props) => {
   const editing = useSelector((state) => state.editSchedule.editSchedule);
+  const daysWorkouts = useSelector((state) => state.workout.daysToWorkouts);
   const days = [
     "Monday",
     "Tuesday",
@@ -20,6 +22,19 @@ const Home = (props) => {
     "Sunday",
   ];
 
+  const noWorkouts = (
+    <p
+      style={{
+        color: "grey",
+        margin: "40px 0",
+        fontSize: "1.4rem",
+        fontStyle: "italic",
+      }}
+    >
+      No workouts on this day
+    </p>
+  );
+
   return (
     <Fragment>
       <MetaHead metacontent="Schedule">Your Schedule | Gym Journal</MetaHead>
@@ -27,12 +42,32 @@ const Home = (props) => {
         <BigHeading edit={true} done={editing}>
           Schedule
         </BigHeading>
-        {days.map((day) => (
-          <Fragment>
-            <MainHeading edit={editing} day={day}>{day}</MainHeading>
-            <Carousel all={false} day={day}/>
-          </Fragment>
-        ))}
+        {days.map((day, index) =>
+          daysWorkouts[day].length ? (
+            <Fragment key={index}>
+              <MainHeading edit={editing} day={day}>
+                {day}
+              </MainHeading>
+              <Carousel key={index} all={false} day={day} />
+            </Fragment>
+          ) : (
+            <Fragment key={index}>
+              <MainHeading edit={editing} day={day}>
+                {day}
+              </MainHeading>
+              <p
+                style={{
+                  color: "grey",
+                  margin: "40px 0",
+                  fontSize: "1.4rem",
+                  fontStyle: "italic",
+                }}
+              >
+                No workouts on this day
+              </p>
+            </Fragment>
+          )
+        )}
       </MainCard>
     </Fragment>
   );

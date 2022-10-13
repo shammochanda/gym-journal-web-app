@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { workoutActions } from "../../store/workouts";
+import { editScheduleActions } from "../../store/editschedule";
 import classes from "./mainheading.module.css";
 import Add from "../icons/add";
 
@@ -10,6 +11,15 @@ const MainHeading = (props) => {
   const [workoutName, setWorkoutName] = useState("");
   const [nameExists, setNameExists] = useState(false);
 
+  let editing = useSelector((state) => state.editSchedule.editSchedule);
+
+  useEffect(() => {
+    if (!editing & !props.search) {
+      setWorkoutName("");
+      setNameExists(false);
+    }
+  }, [editing]);
+
   const dayWorkouts =
     props.day &&
     useSelector((state) => state.workout.daysToWorkouts[props.day]);
@@ -18,17 +28,17 @@ const MainHeading = (props) => {
   const nameOnChangeHandler = (event) => {
     setWorkoutName(event.target.value);
     if (props.search) {
-      dispatch(workoutActions.updateSearchTerm(event.target.value))
+      dispatch(workoutActions.updateSearchTerm(event.target.value));
     }
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const indexAll = allWorkouts.findIndex(element => {
-      return element.toLowerCase() === workoutName.toLowerCase();
+    const indexAll = allWorkouts.findIndex((element) => {
+      return element["workout"].toLowerCase() === workoutName.toLowerCase();
     });
-    const indexDay = dayWorkouts.findIndex(element => {
-      return element.toLowerCase() === workoutName.toLowerCase();
+    const indexDay = dayWorkouts.findIndex((element) => {
+      return element["workout"].toLowerCase() === workoutName.toLowerCase();
     });
     if (indexDay >= 0) {
       setNameExists(true);
@@ -36,14 +46,19 @@ const MainHeading = (props) => {
       setNameExists(true);
     } else {
       setNameExists(false);
-      dispatch(workoutActions.addWorkoutToDay({day:props.day, workout:workoutName}));
+      dispatch(
+        workoutActions.addWorkoutToDay({
+          day: props.day,
+          workout: allWorkouts[indexAll],
+        })
+      );
       setWorkoutName("");
     }
   };
 
   return (
     <h1 className={classes.innerheader}>
-      <span className={classes.mainheading}>{props.children}</span>
+      <span className={classes.mainheading} style={props.style}>{props.children}</span>
       {props.search && (
         <input
           type="search"
@@ -55,19 +70,28 @@ const MainHeading = (props) => {
       )}
       {props.edit && (
         <span className={classes.edit}>
-          <input
-            type="search"
-            placeholder="Add a Workout..."
-            className={`${classes.search} ${nameExists && classes.error}`}
-            required
-            value={workoutName}
-            onChange={nameOnChangeHandler}
-          />
-          <button className={classes.button} onClick={submitHandler}>
-            <Add />
-          </button>
+          <form>
+            <input
+              type="search"
+              placeholder="Add a Workout..."
+              className={`${classes.search} ${nameExists && classes.error}`}
+              required
+              value={workoutName}
+              onChange={nameOnChangeHandler}
+            />
+            <button className={classes.button} onClick={submitHandler}>
+              <Add />
+            </button>
+          </form>
         </span>
       )}
+      {/* {
+        props.remove && (
+          <button className={classes.button} onClick={submitHandler}>
+              Remove
+            </button>
+        )
+      } */}
     </h1>
   );
 };

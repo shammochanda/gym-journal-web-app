@@ -1,37 +1,121 @@
+.block {
+  display: flex;
+}
+
 .form {
-    margin-top: 2rem; 
+  position: relative;
+  margin-top: 2rem;
+  /* margin-right: auto; */
+  /* margin-left: auto; */
+  /* text-align:left; */
+  /* width: 50%; */
+}
+
+.workoutForm {
+  width: 55%;
+}
+
+.exerciseForm {
+  width: 45%;
+  padding-left: 10%;
+}
+
+.exerciseForm div {
+  margin-bottom: 3%;
 }
 
 .form label {
-    margin-right: 10px;
+  margin-right: 10px;
+  float:inline-start;
+  /* text-align: right; */
 }
 
 .form input {
-    margin-right: 10px;
-    border: 1px solid rgb(179, 179, 179);
-    padding-left: 10px;
-    height: 25px;
-    border-radius: 10px;
-    color: black;
+  /* display: block; */
+  margin-right: 10px;
+  border: 1px solid rgb(179, 179, 179);
+  padding-left: 10px;
+  height: 25px;
+  border-radius: 10px;
+  color: black;
+  /* float: inline-end; */
+  /* float:inline-end; */
+  /* overflow: hidden; */
 }
 
 .form button {
-    width: 6rem;
-    height: 2rem;
-    font-size: 16px;
-    background-color: black;
-    color: white;
-    font-weight: bolder;
-    border-radius: 30px;
-    transition: 0.4s;
-    cursor: pointer;
-    border: none;
+  width: 8rem;
+  height: 2rem;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  border-radius: 30px;
+  transition: 0.4s;
+  cursor: pointer;
+  border: none;
 }
 
 .form button:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+@media (max-width: 1421px) {
+  .workoutForm button {
+    margin-top: 7px;
+  }
+}
+
+.exerciseInput {
+  width: 150px;
+}
+
+@media (max-width: 756px) {
+  .exerciseInput {
+    width: 122px;
+  }
 }
 
 .error {
-    background-color: rgba(255, 0, 0, 0.2);
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.exercises {
+  margin-top: 20px;
+  width: 250px;
+  height: 150px;
+  overflow: auto;
+  background-color: transparent;
+  text-align: center;
+}
+
+.details {
+  width:93%;
+  height: 30px;
+  background-color: rgb(207, 207, 207);
+  border-radius: 10px;
+  padding: 7px;
+  padding-right: 15px;
+  margin: 2.5px 0 2.5px 12.5px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+.close:before {
+  content: '✕';
+  color: grey;
+}
+
+.close {
+  display:inline-block;
+  position: relative;
+  left: 207px;
+  width: 0px;
+  cursor: pointer;
+}
+
+span:hover.close:before {
+  color:black;
 }

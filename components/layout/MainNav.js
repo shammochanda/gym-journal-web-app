@@ -5,6 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import classes from "./MainNav.module.css";
 import { useDispatch } from "react-redux";
 import { editScheduleActions } from "../../store/editschedule";
+import { workoutActions } from "../../store/workouts";
 
 const MainNav = (props) => {
   const dispatch = useDispatch();
@@ -18,12 +19,8 @@ const MainNav = (props) => {
   const linkHandler = () => {
     setShowList(false);
     dispatch(editScheduleActions.editOff());
+    dispatch(workoutActions.updateSearchTerm(""));
   };
-
-  // const logoHandler = (event) => {
-  //   setShowList(false);
-  //   dispatch(editScheduleActions.editOff());
-  // };
 
   let change = useMediaQuery({ query: "(min-width: 571px)" });
 
