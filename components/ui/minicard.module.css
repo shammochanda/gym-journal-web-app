@@ -8,6 +8,7 @@
     -0.05rem -0.05rem 0.5rem rgb(161, 161, 161);
   border-radius: 10%;
   transform: scale(1);
+  cursor: pointer;
   transition: 0.4s;
 }
 
@@ -23,7 +24,7 @@
   }
 }
 
-div:hover.minicard {
+div:hover.nohover {
   box-shadow: 0.1rem 0.1rem 1rem rgb(161, 161, 161),
     -0.1rem -0.1rem 1rem rgb(161, 161, 161);
   transform: scale(1.1);
@@ -34,7 +35,7 @@ div:hover.minicard {
   .minicard {
     transform: scale(0.8);
   }
-  div:hover.minicard {
+  div:hover.nohover {
     transform: scale(0.9);
   }
 }
@@ -43,7 +44,7 @@ div:hover.minicard {
   .minicard {
     transform: scale(0.6);
   }
-  div:hover.minicard {
+  div:hover.nohover {
     transform: scale(0.7);
   }
 }
@@ -98,18 +99,23 @@ div:hover.minicard {
 }
 
 .textbox h1 {
+  font-size: 1.3rem;
   padding-bottom: 3%;
   color: black;
+  overflow-wrap: break-word;
 }
 
 .textboxFull div {
   color: grey;
   margin-right: 1%;
+  overflow-wrap: break-word;
 }
 
 .textboxFull h1 {
+  font-size: 1.3rem;
   padding-bottom: 3%;
   color: black;
+  overflow-wrap: break-word;
 }
 
 .subtract {

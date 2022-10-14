@@ -12,6 +12,8 @@ const initialWorkoutState = {
     Sunday: [],
   },
   searchTerm: "",
+  showModal: false,
+  modalFill: {workout: "", exercises:[]}
 };
 
 const workoutSlice = createSlice({
@@ -22,7 +24,13 @@ const workoutSlice = createSlice({
       state.workouts.push(action.payload);
     },
     removeWorkout(state, action) {
-      state.workouts.splice(action.payload, 1);
+      let i = 0;
+      for (; i < state.workouts.length; i++) {
+        if(state.workouts[i]["workout"] === action.payload) {
+          break;
+        }
+      }
+      state.workouts.splice(i, 1);
     },
     addWorkoutToDay(state, action) {
       state.daysToWorkouts[action.payload.day].push(action.payload.workout);
@@ -35,6 +43,14 @@ const workoutSlice = createSlice({
     },
     updateSearchTerm(state, action) {
       state.searchTerm = action.payload;
+    },
+    openModal(state, action) {
+      state.showModal = true;
+      state.modalFill["workout"] = action.payload.workout;
+      state.modalFill["exercises"] = action.payload.exercises;
+    },
+    closeModal(state) {
+      state.showModal = false;
     },
   },
 });

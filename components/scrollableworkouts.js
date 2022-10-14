@@ -15,7 +15,7 @@ const ScrollableWorkout = () => {
           workout["workout"].toLowerCase().includes(searchTerm.toLowerCase())
         )
         .map((slideCard, index) => (
-          <div>
+          <div key={slideCard["workout"]}>
             <MiniCard
               key={slideCard["workout"]}
               title={slideCard["workout"]}

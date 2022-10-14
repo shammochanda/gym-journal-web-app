@@ -4,12 +4,21 @@ import BigHeading from "../components/ui/bigheading";
 import MainCard from "../components/ui/maincard";
 import MainHeading from "../components/ui/mainheading";
 import Carousel from "../components/ui/carousel";
-import { useSelector } from "react-redux";
+import Modal from "../components/ui/modal";
+import Backdrop from "../components/ui/backdrop";
+import { useSelector, useDispatch } from "react-redux";
 import { workoutActions } from "../store/workouts";
 import { editScheduleActions } from "../store/editschedule";
-import { Classnames } from "react-alice-carousel";
 
 const Home = (props) => {
+  const dispatch = useDispatch();
+
+  const modalOn = useSelector((state) => state.workout.showModal);
+
+  const closeModalHandler = () => {
+    dispatch(workoutActions.closeModal());
+  };
+
   const editing = useSelector((state) => state.editSchedule.editSchedule);
   const daysWorkouts = useSelector((state) => state.workout.daysToWorkouts);
   const days = [
@@ -69,6 +78,8 @@ const Home = (props) => {
           )
         )}
       </MainCard>
+      <Modal show={modalOn} closed={closeModalHandler} />
+      {modalOn ? <Backdrop show /> : null}
     </Fragment>
   );
 };

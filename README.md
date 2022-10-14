@@ -2,12 +2,10 @@
 
 ## Objectives
 
-Have a full web-app (including authentication and backend) that keeps track of gym workouts/schedules/personal bests
+Currently it is a functioning UI, authentication and  backend is still to be implemented.
 
-## Current Progress (as of 10/7/22)
+Photograph integration still to be implemented.
 
-Most progress is UI related.
+Website is not very responsive, some components need to be altered
 
-Some future backend stuff is now temporarily being run using redux, just to test functionality.
-
-With most major UI related stuff out of the way, progress is expected to be faster (expected finish 10/10/22) for the rest of the project but this is a stanby to showcase UI abilities.
+Currently, all future backend functionality is implemented using Redux.

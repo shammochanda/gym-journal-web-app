@@ -5,10 +5,22 @@ import MainCard from "../components/ui/maincard";
 import MainHeading from "../components/ui/mainheading";
 import AddWorkoutForm from "../components/addworkoutform";
 import ScrollableWorkout from "../components/scrollableworkouts";
+import Modal from "../components/ui/modal";
+import Backdrop from "../components/ui/backdrop";
 import classes from "../styles/workouts.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { workoutActions } from "../store/workouts";
 import { useMediaQuery } from "react-responsive";
 
 const Home = (props) => {
+
+  const dispatch = useDispatch();
+
+  const modalOn = useSelector((state) => state.workout.showModal);
+
+  const closeModalHandler = () => {
+    dispatch(workoutActions.closeModal());
+  };
 
   const [toStack, setToStack] = useState(false);
 
@@ -40,6 +52,8 @@ const Home = (props) => {
           </div>
         </div>
       </MainCard>
+      <Modal show={modalOn} closed={closeModalHandler} />
+      {modalOn ? <Backdrop show /> : null}
     </Fragment>
   );
 };

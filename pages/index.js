@@ -4,7 +4,9 @@ import BigHeading from "../components/ui/bigheading";
 import MainCard from "../components/ui/maincard";
 import MainHeading from "../components/ui/mainheading";
 import Carousel from "../components/ui/carousel";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Modal from "../components/ui/modal";
+import Backdrop from "../components/ui/backdrop";
 import { workoutActions } from "../store/workouts";
 import MiniCard from "../components/ui/minicard";
 
@@ -16,18 +18,26 @@ const Home = (props) => {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",   
+    "Saturday",
   ];
+
+  const dispatch = useDispatch();
 
   const currentDay = new Date();
 
   const allWorkouts = useSelector((state) => state.workout.workouts);
+
+  const modalOn = useSelector((state) => state.workout.showModal);
 
   const today = days[currentDay.getDay()];
 
   const todaysWorkouts = useSelector(
     (state) => state.workout.daysToWorkouts[today]
   );
+
+  const closeModalHandler = () => {
+    dispatch(workoutActions.closeModal());
+  };
 
   return (
     <Fragment>
@@ -49,7 +59,9 @@ const Home = (props) => {
             No Workouts Today
           </p>
         )}
-        <MainHeading style={{marginRight: "4%"}} search={true}>Workouts</MainHeading>
+        <MainHeading style={{ marginRight: "4%" }} search={true}>
+          Workouts
+        </MainHeading>
         {allWorkouts.length ? (
           <Carousel all={true} />
         ) : (
@@ -65,6 +77,8 @@ const Home = (props) => {
           </p>
         )}
       </MainCard>
+      <Modal show={modalOn} closed={closeModalHandler} />
+      {modalOn ? <Backdrop show /> : null}
     </Fragment>
   );
 };

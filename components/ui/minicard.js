@@ -17,8 +17,21 @@ const MiniCard = (props) => {
     );
   };
 
+  const openModalHandler = () => {
+    if (!props.subtract) {
+      dispatch(
+        workoutActions.openModal({
+          workout: props.title,
+          exercises: props.exercises,
+        })
+      );
+    }
+  };
+
+  // props.subtract ? null :
+
   return (
-    <div className={classes.minicard}>
+    <div className={`${classes.minicard} ${props.subtract ? '': classes.nohover}`} onClick={openModalHandler}>
       <img src={props.imglink} alt={props.alt}></img>
       {props.subtract ? (
         <div className={classes.textbox}>
@@ -26,17 +39,9 @@ const MiniCard = (props) => {
             <h1>{props.title || "Placeholder"}</h1>
             {props.exercises.map((exercise) => (
               <div key={Math.random().toString()}>
-                {`${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
+                {`- ${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
               </div>
             ))}
-            {/* <div>-Some Exercise </div>
-            <div>-Some Exercise</div>
-            <div>-Some Exercise</div>
-            <div>-Some Exercise</div>
-            <div>-Some Exercise</div>
-            <div>-Some Exercise</div>
-            <div>-Some Exercise</div>
-            <div>-Some Exercise</div> */}
           </div>
           <div className={classes.subtract}>
             <button className={classes.button} onClick={subtractHandler}>
@@ -48,18 +53,10 @@ const MiniCard = (props) => {
         <div className={classes.textboxFull}>
           <h1>{props.title || "Placeholder"}</h1>
           {props.exercises.map((exercise) => (
-              <div key={Math.random().toString()}>
-                {`${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
-              </div>
-            ))}
-          {/* <div>-Some Exercise </div>
-          <div>-Some Exercise</div>
-          <div>-Some Exercise</div>
-          <div>-Some Exercise</div>
-          <div>-Some Exercise</div>
-          <div>-Some Exercise</div>
-          <div>-Some Exercise</div>
-          <div>-Some Exercise</div> */}
+            <div key={Math.random().toString()}>
+              {`- ${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
+            </div>
+          ))}
         </div>
       )}
     </div>
