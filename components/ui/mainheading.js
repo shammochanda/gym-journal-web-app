@@ -57,8 +57,8 @@ const MainHeading = (props) => {
   };
 
   return (
-    <h1 className={classes.innerheader}>
-      <span className={classes.mainheading} style={props.style}>{props.children}</span>
+    <h1 className={`${classes.innerheader} ${props.edit ? classes.innerheaderedit : ''}`}>
+      <span className={`${classes.mainheading} ${props.edit ? classes.mainheadingedit : ''}`} style={props.style}>{props.children}</span>
       {props.search && (
         <input
           type="search"
@@ -80,7 +80,7 @@ const MainHeading = (props) => {
               onChange={nameOnChangeHandler}
             />
             <button className={classes.button} onClick={submitHandler}>
-              <Add />
+              {/* <Add /> */}
             </button>
           </form>
         </span>

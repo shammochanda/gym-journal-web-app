@@ -7,20 +7,37 @@
 
 .bigheading {
   font-size: 3.5rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-right:7%;
 }
 
 .button {
-    width: 6rem;
-    height: 3rem;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    font-weight: bolder;
-    border-radius: 30px;
-    transition: 0.4s;
-    cursor: pointer;
+  flex-grow: 0.01;
+  flex-shrink: 1;
+  width: 6rem;
+  height: 3rem;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  border-radius: 30px;
+  transition: 0.4s;
+  cursor: pointer;
+  margin-right: 1%;
 }
 
 button:hover.button {
-    transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+@media (max-width: 585px) {
+  .bigheading {
+    font-size: 2.5rem;
+  }
+  .button {
+    font-size: 16px;
+    width: 5rem;
+  height: 2.5rem;
+  }
 }

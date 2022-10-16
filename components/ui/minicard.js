@@ -11,9 +11,9 @@ const MiniCard = (props) => {
     useSelector((state) => state.workout.daysToWorkouts[props.day]);
 
   const subtractHandler = () => {
-    const index = dayWorkouts.indexOf(props.title);
+    // const index = dayWorkouts.indexOf(props.title);
     dispatch(
-      workoutActions.removeWorkoutFromDay({ day: props.day, workout: index })
+      workoutActions.removeWorkoutFromDay({day: props.day, workout: props.title})
     );
   };
 
@@ -31,7 +31,7 @@ const MiniCard = (props) => {
   // props.subtract ? null :
 
   return (
-    <div className={`${classes.minicard} ${props.subtract ? '': classes.nohover}`} onClick={openModalHandler}>
+    <div className={`${classes.minicard} ${props.subtract ? '': classes.nohover} ${props.inline ? classes.makeInline : ''}`} onClick={openModalHandler}>
       <img src={props.imglink} alt={props.alt}></img>
       {props.subtract ? (
         <div className={classes.textbox}>

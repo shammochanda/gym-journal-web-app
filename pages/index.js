@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Modal from "../components/ui/modal";
 import Backdrop from "../components/ui/backdrop";
 import { workoutActions } from "../store/workouts";
-import MiniCard from "../components/ui/minicard";
+import HorizontalScroll from "../components/ui/horizontalscroll";
 
 const Home = (props) => {
   const days = [
@@ -46,13 +46,13 @@ const Home = (props) => {
         <BigHeading>Dashboard</BigHeading>
         <MainHeading>Today</MainHeading>
         {todaysWorkouts.length ? (
-          <Carousel all={false} day={today} />
+          <HorizontalScroll all={false} day={today} />
         ) : (
           <p
             style={{
               color: "grey",
               margin: "50px 0",
-              fontSize: "1.4rem",
+              fontSize: "1.2rem",
               fontStyle: "italic",
             }}
           >
@@ -63,13 +63,13 @@ const Home = (props) => {
           Workouts
         </MainHeading>
         {allWorkouts.length ? (
-          <Carousel all={true} />
+          <HorizontalScroll all={true} />
         ) : (
           <p
             style={{
               color: "grey",
               margin: "50px 0",
-              fontSize: "1.4rem",
+              fontSize: "1.2rem",
               fontStyle: "italic",
             }}
           >

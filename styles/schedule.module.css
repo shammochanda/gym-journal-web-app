@@ -1,0 +1,12 @@
+.blurb {
+  color: grey;
+  margin: 40px 0;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+@media (max-width: 370px) {
+    .blurb {
+        margin: 20px 0 40px 0;
+    }
+}

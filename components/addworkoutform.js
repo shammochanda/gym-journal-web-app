@@ -19,6 +19,12 @@ const AddWorkoutForm = (props) => {
 
   const [nameExists, setNameExists] = useState(false);
 
+  const [blankExercise, setBlankExercise] = useState(false);
+
+  const [blankReps, setBlankReps] = useState(false);
+
+  const [blankSets, setBlankSets] = useState(false);
+
   const allWorkouts = useSelector((state) => state.workout.workouts);
 
   const nameOnChangeHandler = (event) => {
@@ -40,7 +46,10 @@ const AddWorkoutForm = (props) => {
 
   const submitWorkoutHandler = (event) => {
     event.preventDefault();
-
+    if (workoutName === "") {
+      setNameExists(true);
+      return;
+    }
     const index = allWorkouts.findIndex((element) => {
       return element["workout"].toLowerCase() === workoutName.toLowerCase();
     });
@@ -48,7 +57,12 @@ const AddWorkoutForm = (props) => {
       setNameExists(true);
     } else {
       setNameExists(false);
-      dispatch(workoutActions.addWorkout({workout: workoutName, allExercises: exercises}));
+      dispatch(
+        workoutActions.addWorkout({
+          workout: workoutName,
+          allExercises: exercises,
+        })
+      );
       setWorkoutName("");
       setExercises([]);
     }
@@ -57,7 +71,12 @@ const AddWorkoutForm = (props) => {
   const submitExerciseHandler = (event) => {
     event.preventDefault();
 
-    // const singleExercise = [numSets, numReps, exerciseName];
+    if (numReps === "" || numSets === "" || exerciseName === "") {
+      setBlankReps(numReps === "");
+      setBlankSets(numSets === "");
+      setBlankExercise(exerciseName === "");
+      return;
+    }
 
     const singleExercise = {
       sets: numSets,
@@ -67,6 +86,9 @@ const AddWorkoutForm = (props) => {
 
     setExercises((prevState) => [...prevState, singleExercise]);
 
+    setBlankExercise(false);
+    setBlankReps(false);
+    setBlankSets(false);
     setExerciseName("");
     setNumReps("");
     setNumSets("");
@@ -101,23 +123,27 @@ const AddWorkoutForm = (props) => {
           onChange={nameOnChangeHandler}
           value={workoutName}
         />
-        <button onClick={submitWorkoutHandler}>Add Workout</button>
-        <div className={classes.exercises}>
-          {exercises.map((exercise) => (
-            <div className={classes.details} key={Math.random().toString()}>
-              <span
-                className={classes.close}
-                onClick={removeExerciseHandler.bind(
-                  null,
-                  exercise["sets"],
-                  exercise["reps"],
-                  exercise["exercise"]
-                )}
-              ></span>
-              {`${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
-            </div>
-          ))}
-        </div>
+        <button onClick={submitWorkoutHandler} type="submit">
+          Add Workout
+        </button>
+        {exercises.length !== 0 && (
+          <div className={classes.exercises}>
+            {exercises.map((exercise) => (
+              <div className={classes.details} key={Math.random().toString()}>
+                <span
+                  className={classes.close}
+                  onClick={removeExerciseHandler.bind(
+                    null,
+                    exercise["sets"],
+                    exercise["reps"],
+                    exercise["exercise"]
+                  )}
+                ></span>
+                {`${exercise["sets"]} x ${exercise["reps"]} ${exercise["exercise"]}`}
+              </div>
+            ))}
+          </div>
+        )}
       </form>
       <form className={`${classes.form} ${classes.exerciseForm}`}>
         <div>
@@ -125,11 +151,13 @@ const AddWorkoutForm = (props) => {
           <input
             type="text"
             id="exercise"
-            className={classes.exerciseInput}
+            className={`${classes.exerciseInput} ${
+              blankExercise ? classes.error : ""
+            }`}
             required
             onChange={exerciseOnChangeHandler}
             value={exerciseName}
-          />
+          ></input>
         </div>
         <div>
           <label htmlFor="sets">Sets:</label>
@@ -139,8 +167,9 @@ const AddWorkoutForm = (props) => {
             min={1}
             required
             onChange={setsOnChangeHandler}
+            className={`${blankSets ? classes.error : ""}`}
             value={numSets}
-            style={{ width: "50px", marginLeft: "27px" }}
+            style={{ width: "78px", marginLeft: "27px" }}
           />
         </div>
         <div>
@@ -151,8 +180,9 @@ const AddWorkoutForm = (props) => {
             id="reps"
             required
             onChange={repsOnChangeHandler}
+            className={`${blankReps ? classes.error : ""}`}
             value={numReps}
-            style={{ width: "50px", marginLeft: "22px" }}
+            style={{ width: "78px", marginLeft: "22px" }}
           />
         </div>
         <button onClick={submitExerciseHandler}>Add Exercise</button>

@@ -1,0 +1,10 @@
+.horizontalScroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    /* display: flex;
+    flex-wrap: nowrap; */
+    height: 230px;
+    width: 100%;
+    /* padding-left: 0px; */
+}

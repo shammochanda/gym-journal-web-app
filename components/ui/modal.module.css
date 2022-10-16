@@ -109,7 +109,7 @@ span:hover.close:before {
 
 .buttons {
   position: absolute;
-  width: 30%;
+  width: 150px;
   left: 72%;
   bottom: 0%;
   height: 30px;
@@ -142,4 +142,78 @@ button:hover.closeBtn {
 
 button:hover.deleteBtn {
     border: 1px solid rgb(252, 252, 252);
+}
+
+/*950px breakpoint*/
+
+@media (max-width: 950px) {
+  .Modal {
+    position: fixed;
+    z-index: 200;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    background-color: white;
+    padding: 0;
+    text-align: center;
+    box-sizing: border-box;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 20px;
+    transition: all 0.6s ease-out;
+  }
+
+  .Modal img {
+    position: relative;
+    height: 35%;
+    width: 100%;
+    left: 0%;
+    border: 0px solid transparent;
+    border-radius: 10% 10% 0 0;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    /* border: none; */
+  }
+
+  .textboxFull {
+    position: relative;
+    width: 100%;
+    left: 0%;
+    bottom: 0%;
+    height: 65%;
+    border-radius: 0 0 10% 10%;
+    margin: 0;
+    /* padding-top: 2%; */
+    /* padding-left: 2%; */
+    padding: 1.5%;
+    overflow: auto;
+    text-align: left;
+    /* border: 2px solid red; */
+    /* border: none; */
+    /* padding-bottom: 2%; */
+    /* background:linear-gradient(transparent 100%, white); */
+  }
+  
+  .textboxFull div {
+    color: grey;
+    margin-right: 1%;
+    margin-bottom: 2px;
+  }
+
+  .buttons {
+    position: absolute;
+    width: 150px;
+    left: 0px;
+    bottom: 0%;
+    /* float: right; */
+    height: 30px;
+    border-radius: 0 10% 10% 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .Modal {
+    width: 75%;
+    left: 12.5%;
+  }
 }

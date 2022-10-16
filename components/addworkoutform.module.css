@@ -12,12 +12,12 @@
 }
 
 .workoutForm {
-  width: 55%;
+  width: 60%;
 }
 
 .exerciseForm {
-  width: 45%;
-  padding-left: 10%;
+  width: 40%;
+  padding-left: 5%;
 }
 
 .exerciseForm div {
@@ -44,6 +44,7 @@
 }
 
 .form button {
+  /* float: right; */
   width: 8rem;
   height: 2rem;
   font-size: 16px;
@@ -60,21 +61,19 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 1421px) {
-  .workoutForm button {
-    margin-top: 7px;
-  }
-}
-
 .exerciseInput {
   width: 150px;
 }
 
-@media (max-width: 756px) {
+/* .workoutForm button {
+  margin-left: 6px;
+} */
+
+/* @media (max-width: 756px) {
   .exerciseInput {
     width: 122px;
   }
-}
+} */
 
 .error {
   background-color: rgba(255, 0, 0, 0.2);
@@ -86,7 +85,7 @@
   height: 150px;
   overflow: auto;
   background-color: transparent;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .details {
@@ -96,7 +95,7 @@
   border-radius: 10px;
   padding: 7px;
   padding-right: 15px;
-  margin: 2.5px 0 2.5px 12.5px;
+  margin: 2.5px 0 2.5px 0px;
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
@@ -118,4 +117,44 @@
 
 span:hover.close:before {
   color:black;
+}
+
+@media (max-width: 1723px) {
+  .workoutForm button {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 1542px) {
+  .exerciseForm {
+    padding: 0;
+  }
+}
+
+@media (max-width: 1357px) {
+  .exerciseForm {
+    padding-left: 5%;
+  }
+}
+
+@media (max-width: 876px) {
+  .exerciseForm {
+    padding: 0;
+  }
+}
+
+@media (max-width: 697px) {
+  .block {
+    display: block;
+  }
+  .workoutForm {
+    width: 100%;
+  }
+  .exerciseForm {
+    width: 100%;
+  }
+  .exercises {
+    height: 75px;
+  }
 }

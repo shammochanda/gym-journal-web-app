@@ -1,11 +1,18 @@
 .maincard {
-    background-color: white;
-    width: 94%;
-    height: 82%;
-    position: absolute;
-    top: 13%;
-    border-radius: 2%;
-    box-shadow: 0.1rem 0.1rem 1.5rem rgb(161, 161, 161), -0.1rem -0.1rem 1.5rem rgb(161, 161, 161); 
-    padding: 2%;
-    overflow-y: auto;
+  background-color: white;
+  width: 94%;
+  height: 82%;
+  position: absolute;
+  top: 13%;
+  border-radius: 2%;
+  box-shadow: 0.1rem 0.1rem 1.5rem rgb(161, 161, 161),
+    -0.1rem -0.1rem 1.5rem rgb(161, 161, 161);
+  padding: 30px;
+  overflow-y: auto;
+}
+
+@media (max-width: 555px) {
+  .maincard {
+    padding: 5%;
+  }
 }

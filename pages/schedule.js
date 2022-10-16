@@ -8,6 +8,8 @@ import Modal from "../components/ui/modal";
 import Backdrop from "../components/ui/backdrop";
 import { useSelector, useDispatch } from "react-redux";
 import { workoutActions } from "../store/workouts";
+import HorizontalScroll from "../components/ui/horizontalscroll";
+import classes from "../styles/schedule.module.css"
 import { editScheduleActions } from "../store/editschedule";
 
 const Home = (props) => {
@@ -36,7 +38,7 @@ const Home = (props) => {
       style={{
         color: "grey",
         margin: "40px 0",
-        fontSize: "1.4rem",
+        fontSize: "1.2rem",
         fontStyle: "italic",
       }}
     >
@@ -57,21 +59,14 @@ const Home = (props) => {
               <MainHeading edit={editing} day={day}>
                 {day}
               </MainHeading>
-              <Carousel key={index} all={false} day={day} />
+              <HorizontalScroll key={index} all={false} day={day} />
             </Fragment>
           ) : (
             <Fragment key={index}>
               <MainHeading edit={editing} day={day}>
                 {day}
               </MainHeading>
-              <p
-                style={{
-                  color: "grey",
-                  margin: "40px 0",
-                  fontSize: "1.4rem",
-                  fontStyle: "italic",
-                }}
-              >
+              <p className={classes.blurb}>
                 No workouts on this day
               </p>
             </Fragment>

@@ -2,7 +2,7 @@
   background-color: white;
   width: 20rem;
   height: 11rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 1.5rem 0 1.5rem;
   /* margin-bottom: 2rem; */
   box-shadow: 0.05rem 0.05rem 0.5rem rgb(161, 161, 161),
     -0.05rem -0.05rem 0.5rem rgb(161, 161, 161);
@@ -10,28 +10,124 @@
   transform: scale(1);
   cursor: pointer;
   transition: 0.4s;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-height: 11rem;
+  position: relative;
+  display: block;
+  /* max-width: 20rem; */
+  /* min-width: 10rem; */
 }
 
-@media (max-width: 890px) {
+.makeInline {
+  display: inline-block;
+  white-space:normal;
+  width:20rem;
+  height:11rem;
+  /* margin-left: 0px; */
+}
+
+div:hover.nohover {
+  box-shadow: 0.1rem 0.1rem 0.6rem rgb(161, 161, 161),
+    -0.1rem -0.1rem 0.6rem rgb(161, 161, 161);
+  transform: scale(1.02);
+  transition: 0.4s;
+}
+
+@media (max-width: 1620px) {
   .minicard {
-    transform: scale(0.8);
+    transform: scale(0.95);
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1550px) {
+  .minicard {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 1470px) {
+  .minicard {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 1357px) {
   .minicard {
     transform: scale(1);
   }
 }
 
-div:hover.nohover {
-  box-shadow: 0.1rem 0.1rem 1rem rgb(161, 161, 161),
-    -0.1rem -0.1rem 1rem rgb(161, 161, 161);
-  transform: scale(1.1);
-  transition: 0.4s;
+@media (max-width: 1100px) {
+  .minicard {
+    transform: scale(0.95);
+  }
+  div:hover.minicard {
+    transform: scale(0.98);
+  }
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 890px) {
+  .minicard {
+    transform: scale(0.8);
+  }
+} */
+
+@media (max-width: 750px) {
+  .minicard {
+    transform: scale(0.9);
+  }
+  div:hover.minicard {
+    transform: scale(0.93);
+  }
+}
+
+/* @media (max-width: 719px) {
+  .minicard {
+    transform: scale(0.85);
+  }
+} */
+
+@media (max-width: 438px) {
+  .minicard {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 420px) {
+  .minicard {
+    transform: scale(0.85);
+  }
+  div:hover.minicard {
+    transform: scale(0.88);
+  }
+}
+
+@media (max-width: 410px) {
+  .minicard {
+    transform: scale(0.8);
+  }
+  div:hover.minicard {
+    transform: scale(0.83);
+  }
+}
+
+@media (max-width: 400px) {
+  .minicard {
+    transform: scale(0.7);
+  }
+  /* .minicard.makeInline {
+    margin-left: 0px;
+  } */
+  div:hover.minicard {
+    transform: scale(0.72);
+  }
+}
+
+
+/* @media (max-width: 600px) {
   .minicard {
     transform: scale(0.8);
   }
@@ -47,7 +143,7 @@ div:hover.nohover {
   div:hover.nohover {
     transform: scale(0.7);
   }
-}
+} */
 
 .minicard img {
   height: 100%;
@@ -100,6 +196,7 @@ div:hover.nohover {
 
 .textbox h1 {
   font-size: 1.3rem;
+  /* font-size: 110%; */
   padding-bottom: 3%;
   color: black;
   overflow-wrap: break-word;
@@ -107,12 +204,14 @@ div:hover.nohover {
 
 .textboxFull div {
   color: grey;
+  /* font-size: 0.8rem; */
   margin-right: 1%;
   overflow-wrap: break-word;
 }
 
 .textboxFull h1 {
   font-size: 1.3rem;
+  /* font-size: 110%; */
   padding-bottom: 3%;
   color: black;
   overflow-wrap: break-word;

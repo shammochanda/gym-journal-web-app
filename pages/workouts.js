@@ -46,7 +46,7 @@ const Home = (props) => {
             <AddWorkoutForm />
           </div>
           <div className={classes.all}>
-            <MainHeading style={{marginRight: "4%"}} search={true}>All Workouts</MainHeading>
+            <MainHeading style={{marginRight: "4%", marginLeft: "20px"}} search={true}>All Workouts</MainHeading>
 
             <ScrollableWorkout />
           </div>
