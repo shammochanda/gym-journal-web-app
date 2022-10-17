@@ -6,9 +6,7 @@ import Subtract from "../icons/subtract";
 const MiniCard = (props) => {
   const dispatch = useDispatch();
 
-  const dayWorkouts =
-    props.day &&
-    useSelector((state) => state.workout.daysToWorkouts[props.day]);
+  const dayWorkouts = useSelector((state) => state.workout.daysToWorkouts[props.day]);
 
   const subtractHandler = () => {
     // const index = dayWorkouts.indexOf(props.title);

@@ -20,9 +20,7 @@ const Carousel = (props) => {
 
   const allWorkouts = useSelector((state) => state.workout.workouts);
 
-  const dayWorkouts =
-    !props.all &&
-    useSelector((state) => state.workout.daysToWorkouts[props.day]);
+  const dayWorkouts = useSelector((state) => state.workout.daysToWorkouts[props.day]);
 
   const searchTerm = useSelector((state) => state.workout.searchTerm);
 

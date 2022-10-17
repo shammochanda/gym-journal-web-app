@@ -20,9 +20,7 @@ const MainHeading = (props) => {
     }
   }, [editing]);
 
-  const dayWorkouts =
-    props.day &&
-    useSelector((state) => state.workout.daysToWorkouts[props.day]);
+  const dayWorkouts = useSelector((state) => state.workout.daysToWorkouts[props.day]);
   const allWorkouts = useSelector((state) => state.workout.workouts);
 
   const nameOnChangeHandler = (event) => {
