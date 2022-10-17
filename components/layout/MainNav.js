@@ -49,7 +49,7 @@ const MainNav = (props) => {
               <a onClick={linkHandler}>Workouts</a>
             </Link>
           </li>
-          <li className={classes.nav}>
+          {/* <li className={classes.nav}>
             <Link href="/pbs">
               <a onClick={linkHandler}>PBs</a>
             </Link>
@@ -58,7 +58,7 @@ const MainNav = (props) => {
             <Link href="/logout">
               <a onClick={linkHandler}>Logout</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
         <ul className={classes.smalllist}>
           <li className={classes.hamburger}>
@@ -78,7 +78,7 @@ const MainNav = (props) => {
               <a onClick={linkHandler}>Workouts</a>
             </Link>
           </li>
-          <li className={classes.nav}>
+          {/* <li className={classes.nav}>
             <Link href="/pbs">
               <a onClick={linkHandler}>PBs</a>
             </Link>
@@ -87,7 +87,7 @@ const MainNav = (props) => {
             <Link href="/logout">
               <a onClick={linkHandler}>Logout</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>
